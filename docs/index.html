@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <title>院內藥品查詢｜屏東基督教醫院</title>
+ <meta name="description" content="屏東基督教醫院藥品查詢介面設計預覽">
+ <meta name="robots" content="noindex,nofollow">
+ <meta property="og:type" content="website">
+ <meta property="og:title" content="屏基藥品查詢｜介面操作預覽">
+ <meta property="og:description" content="預覽藥品查詢、照片、藥品專區與公告介面，供院內討論與回饋。">
+ <meta property="og:url" content="https://xanax1106.github.io/Pharmacy/">
+ <meta property="og:image" content="https://xanax1106.github.io/Pharmacy/assets/share-preview.png">
+ <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+ <link rel="stylesheet" href="styles.css"><script defer src="data.js"></script><script defer src="portal-data.js"></script><script defer src="portal.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+ <a class="skip" href="#main">跳至主要內容</a>
+ <header class="site-header"><div class="header-inner">
+  <a class="brand" href="#" aria-label="回藥品查詢首頁"><img class="hospital-logo" src="assets/ptch-logo.svg" width="395" height="62" alt="屏基醫療財團法人屏東基督教醫院 Pingtung Christian Hospital"></a><div class="service-name"><strong>藥學部</strong><span>院內藥品查詢</span></div>
+  <nav aria-label="主要導覽"><a href="#" class="nav-link" id="nav-search">藥品查詢</a><a href="#special" class="nav-link" id="nav-special">藥品專區</a><a href="#announcements" class="nav-link" id="nav-notices">藥品公告</a><a href="#saved" class="nav-link" id="nav-saved"><span class="icon" data-icon="bookmark"></span>我的收藏 <span id="saved-count" class="count"></span></a><button class="nav-link" id="resources-button">常用連結 <span class="tiny-arrow">↗</span></button></nav>
+  <span class="preview-label">介面設計預覽</span>
+ </div></header>
+ <main id="main" tabindex="-1">
+  <section id="search-view">
+   <div class="search-region"><div class="search-content">
+    <div class="eyebrow"><span></span>院內藥品資料庫</div>
+    <div class="hero-heading"><h1>院內藥品查詢</h1><p>從藥名、成分或醫令碼，找到需要的用藥資訊。</p></div>
+    <form id="search-form" role="search"><div class="search-box"><span class="search-icon icon" data-icon="search"></span><label for="query" class="sr-only">藥名、學名、醫令碼、院碼或健保碼</label><input id="query" type="search" placeholder="輸入中英文藥名、學名、醫令碼或院碼" autocomplete="off" spellcheck="false"><kbd title="鍵盤快捷鍵">/</kbd><button id="search-submit" class="primary" type="submit">查詢 <span aria-hidden="true">→</span></button></div></form>
+    <div class="search-below"><div class="examples"><span>試試搜尋</span><button data-search="Vancomycin">Vancomycin</button><button data-search="Amoxicillin">Amoxicillin</button><button data-search="IVANC">IVANC</button></div><p>品項依據 <span id="catalogue-date">2026/10/30</span> 院內藥典</p></div>
+   </div></div>
+   <div class="workspace">
+    <div class="filter-line"><div class="route-tabs" role="group" aria-label="依途徑篩選"><button class="active" data-route="全部">全部品項 <span id="total-count"></span></button><button data-route="口服">口服</button><button data-route="注射">注射</button><button data-route="外用及其他">外用及其他</button></div><label class="check-filter"><input id="clinical-only" type="checkbox">已有臨床內容</label></div>
+    <section id="home-content">
+     <div class="section-heading"><div><span class="eyebrow subdued">PHARMACY UPDATES</span><h2>藥品公告</h2></div><a class="text-button" href="#announcements">查看全部公告 <span>↗</span></a></div>
+     <div id="home-notices" class="home-notices"></div>
+     <div class="section-heading"><div><span class="eyebrow subdued">QUICK ACCESS</span><h2>快速查詢</h2></div><button class="text-button" id="browse-all">瀏覽全部品項 <span>↗</span></button></div>
+     <div class="quick-grid" id="quick-grid"></div>
+     <div class="section-heading special-heading"><div><span class="eyebrow subdued">MEDICATION SAFETY</span><h2>藥品專區</h2></div><a class="text-button" href="#special">瀏覽全部專區 <span>↗</span></a></div>
+     <div class="special-grid" id="special-grid"></div>
+     <div class="data-band"><div class="data-band-intro"><span class="icon" data-icon="layers"></span><div><strong>一個入口，清楚查閱</strong><span>品項識別、臨床用法與來源依據</span></div></div><div><strong id="inventory-count"></strong><span>院內使用中品項</span></div><div><strong id="clinical-count"></strong><span>已有編修內容</span></div><div class="data-band-note">依原資料日期呈現<br>上線內容須經藥學部核定</div></div>
+    </section>
+    <section id="results-content" hidden>
+     <div class="results-heading"><div><span class="eyebrow subdued" id="results-eyebrow">SEARCH RESULTS</span><h2 id="results-title">查詢結果</h2><p id="results-description" aria-live="polite"></p></div><label class="sort-label">排序 <select id="sort"><option value="match">相關程度</option><option value="name">品名 A–Z</option><option value="code">醫令碼 A–Z</option></select></label></div>
+     <div id="active-query"></div>
+     <div class="results-table-wrap"><table class="results-table"><thead><tr><th scope="col">藥品名稱／成分</th><th scope="col">規格與途徑</th><th scope="col">醫令碼／院碼</th><th scope="col">內容</th><th scope="col"><span class="sr-only">收藏</span></th></tr></thead><tbody id="results-body"></tbody></table></div>
+     <div class="empty-state" id="empty-state" hidden><span class="icon" data-icon="search"></span><h3>沒有找到符合的藥品</h3><p>可縮短關鍵字，或改用學名、醫令碼及院碼搜尋。</p><button class="secondary" id="reset-search">清除搜尋條件</button></div>
+     <div class="pagination"><span id="range-label"></span><div><button id="prev-page" class="page-button" aria-label="上一頁">←</button><span id="page-label"></span><button id="next-page" class="page-button" aria-label="下一頁">→</button></div></div>
+    </section>
+   </div>
+  </section>
+  <section id="detail-view" hidden></section>
+  <section id="directory-view" hidden></section>
+ </main>
+ <footer><div><span>屏東基督教醫院 <b>／</b> 藥學部</span><span>院內藥品查詢 · 介面設計 2026.11</span></div><p>本版供介面與流程評估；臨床內容沿用既有編修資料，正式上線前須由藥學部核定。</p></footer>
+ <dialog id="resources-dialog"><div class="dialog-top"><div><span class="eyebrow subdued">RESOURCES</span><h2>常用查詢連結</h2></div><button class="icon-button" id="close-resources" aria-label="關閉">✕</button></div><p>前往官方網站，查閱仿單與健保給付依據。</p><div class="resource-links"><a href="https://mcp.fda.gov.tw/" target="_blank" rel="noopener noreferrer"><span><strong>TFDA 藥品仿單查詢</strong><small>依藥名、成分及藥證查詢仿單</small></span>↗</a><a href="https://info.nhi.gov.tw/INAE3000" target="_blank" rel="noopener noreferrer"><span><strong>健保用藥品項查詢</strong><small>品項代碼與給付狀態</small></span>↗</a><a href="https://www.nhi.gov.tw/ch/np-2505-1.html" target="_blank" rel="noopener noreferrer"><span><strong>健保藥品給付規定</strong><small>給付條件、公告與修訂</small></span>↗</a></div><small class="external-note">外部網站需可連線網際網路；各品項另保留原始資料來源。</small></dialog>
+ <div id="toast" role="status" aria-live="polite"></div>
+<dialog id="photo-dialog" aria-labelledby="photo-title" class="photo-dialog"><div class="photo-dialog-heading"><h2 id="photo-title"></h2><button id="close-photo" aria-label="關閉藥品照片">×</button></div><p id="photo-code"></p><img id="photo-full" alt="" width="400" height="300"><p class="photo-caption">本院提供之藥品照片，供外觀辨識；請核對實際包裝與藥袋。</p></dialog>
+</body></html>
